@@ -5,6 +5,8 @@ const Manager = require("./lib/manager");
 const Intern = require("./lib/intern");
 const Employee = require("./lib/employee");
 
+//Function to concat cards that are created depending on user input
+
 function generateHTML(employees) {
   const htmlTop = ` <!DOCTYPE html>
   <html lang="en">
@@ -50,9 +52,9 @@ function generateHTML(employees) {
   let cardTemplate = "";
   for (let i = 0; i < employees.length; i++) {
     let role;
-    if (employees[i].getRole() === "Engineer") {
-      role = employees[i].github;
-    } else if (employees[i].getRole() === "Manager") {
+    if (employees[i].getRole() === "🛠️ Engineer") {
+      role = `GitHub: <a href = https://github.com/${employees[i].github} target="_blank">${employees[i].github}</a>`;
+    } else if (employees[i].getRole() === "👔 Manager") {
       role = employees[i].officeNumber;
     } else {
       role = employees[i].school;
@@ -62,11 +64,13 @@ function generateHTML(employees) {
       `\n<div class="col">
     
   <div class="card" style="width: 18rem">
-    <div class="card-header">${employees[i].name}</div>
+    <div class="card-header name">${employees[i].name}</div>
     <div class="card-header">${employees[i].getRole()}</div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">ID: ${employees[i].id}</li>
-      <li class="list-group-item">Email: ${employees[i].email}</li>
+      <li class="list-group-item">Email: <a href= 'mailto:${
+        employees[i].email
+      }'>${employees[i].email}</a></li>
       <li class="list-group-item">${role}</li>
     </ul>
   </div>
@@ -74,6 +78,8 @@ function generateHTML(employees) {
   }
 
   const outPut = htmlTop + cardTemplate + htmlBottom;
+
+//Creates HTML Doc and saves a copy in dist folder
 
   writeHTML();
 
@@ -85,6 +91,8 @@ function generateHTML(employees) {
 
   return outPut;
 }
+
+//Question Arrays dependant on Role
 
 const employees = [];
 
@@ -170,6 +178,8 @@ const internQuestions = [
   },
 ];
 
+//Function creates new class dependant on user input
+
 function rolePicker() {
   inquirer.prompt(roleQuestion).then((response) => {
     if (response.role === "Engineer") {
@@ -179,7 +189,7 @@ function rolePicker() {
             response.name,
             response.id,
             response.email,
-            (response.github = `GitHub: ${response.github}`)
+            response.github
           )
         );
         rolePicker();

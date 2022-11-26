@@ -42,5 +42,5 @@ it("Can create an instance of Manager with office number", () => {
 it("Does the getRole() method return Manager", () => {
   const testEmployee = new Manager("Bingo", 52, "bingo@test.com");
 
-  expect(testEmployee.getRole()).toBe("Manager");
+  expect(testEmployee.getRole()).toBe("👔 Manager");
 });

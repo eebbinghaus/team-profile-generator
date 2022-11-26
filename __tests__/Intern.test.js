@@ -44,5 +44,5 @@ it("Does the getSchool() method return a school", () => {
 it("Does the getRole() method return Intern", () => {
   const testEmployee = new Intern("Bingo", 52, "bingo@test.com", "DU");
 
-  expect(testEmployee.getRole()).toBe("Intern");
+  expect(testEmployee.getRole()).toBe("🎓 Intern");
 });

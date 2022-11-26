@@ -44,5 +44,5 @@ it("Does the getGitHub() method return a GitHub account", () => {
 it("Does the getRole() method return Engineer", () => {
   const testEmployee = new Engineer("Bingo", 52, "bingo@test.com", "gittyhub");
 
-  expect(testEmployee.getRole()).toBe("Engineer");
+  expect(testEmployee.getRole()).toBe("🛠️ Engineer");
 });
